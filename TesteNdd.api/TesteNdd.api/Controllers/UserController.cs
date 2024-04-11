@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
@@ -32,6 +33,7 @@ namespace TesteNdd.api.Controllers
         public async Task<IActionResult> GetUserbyId(Guid id)
         {
             var user = await _mediator.Send(new GetUserByIdQuery(id));
+
             return Ok(user);
 
         }
@@ -54,6 +56,7 @@ namespace TesteNdd.api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, [FromBody] UpdateUserCommand UpdateUser)
         {
+
             var command = new UpdateUserCommand(id, UpdateUser.Telefone, UpdateUser.Email, UpdateUser.Observacao);
 
             await _mediator.Send(command);

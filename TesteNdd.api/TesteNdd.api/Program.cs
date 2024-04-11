@@ -22,6 +22,7 @@ builder.Services.AddControllers().AddFluentValidation(fv => fv.RegisterValidator
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //builder.Services.AddMediatR(cfg => {
 //    cfg.RegisterServicesFromAssemblyContaining<GetAllUsersQuery>();
 //});
