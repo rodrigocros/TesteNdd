@@ -65,7 +65,7 @@ namespace TesteNdd.api.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var command = new DeleteProjectComand(id);

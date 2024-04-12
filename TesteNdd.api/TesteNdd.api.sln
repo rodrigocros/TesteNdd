@@ -3,13 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteNdd.api", "TesteNdd.api\TesteNdd.api.csproj", "{3213484F-AC9A-4615-9F5F-CB8D37A3BEA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteNdd.api", "TesteNdd.api\TesteNdd.api.csproj", "{3213484F-AC9A-4615-9F5F-CB8D37A3BEA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteNDD.domain", "TesteNDD.domain\TesteNDD.domain.csproj", "{19AEAAA5-F165-4AD6-8E3E-494E21BD5FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteNDD.domain", "TesteNDD.domain\TesteNDD.domain.csproj", "{19AEAAA5-F165-4AD6-8E3E-494E21BD5FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteNdd.application", "TesteNdd.application\TesteNdd.application.csproj", "{740AEAFC-4689-4D36-B162-38A7B4BFA626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteNdd.application", "TesteNdd.application\TesteNdd.application.csproj", "{740AEAFC-4689-4D36-B162-38A7B4BFA626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteNdd.infrastructure", "TesteNdd.infrastructure\TesteNdd.infrastructure.csproj", "{AD5ABB19-4DD7-4682-85E1-4C3256623CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteNdd.infrastructure", "TesteNdd.infrastructure\TesteNdd.infrastructure.csproj", "{AD5ABB19-4DD7-4682-85E1-4C3256623CDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteNdd.UnitTests", "TesteNdd.UnitTests\TesteNdd.UnitTests.csproj", "{CF4DD767-F614-4F17-A5E3-BD0914AE5AC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D3BA2CD-0199-4B03-8375-FE5548B9B998}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +40,10 @@ Global
 		{AD5ABB19-4DD7-4682-85E1-4C3256623CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD5ABB19-4DD7-4682-85E1-4C3256623CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD5ABB19-4DD7-4682-85E1-4C3256623CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF4DD767-F614-4F17-A5E3-BD0914AE5AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF4DD767-F614-4F17-A5E3-BD0914AE5AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF4DD767-F614-4F17-A5E3-BD0914AE5AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF4DD767-F614-4F17-A5E3-BD0914AE5AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

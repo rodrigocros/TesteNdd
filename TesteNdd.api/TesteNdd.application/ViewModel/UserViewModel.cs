@@ -8,9 +8,12 @@ namespace TesteNdd.application.ViewModel
 {
     public class UserViewModel
     {
-        public UserViewModel(string nome, string sexo, string telefone, string email, DateTime dataNascimento, string observacao)
+        public UserViewModel(Guid id,string nome, string cpf, string sexo, string telefone, string email, DateTime dataNascimento, string observacao)
         {
+
+            Id = id;
             Nome = nome;
+            Cpf = cpf;
             Sexo = sexo;
             Telefone = telefone;
             Email = email;
@@ -18,7 +21,9 @@ namespace TesteNdd.application.ViewModel
             Observacao = observacao;
         }
 
+        public Guid Id { get; private set; }
         public string Nome { get; private set; }
+        public string Cpf { get; private set; }
         public string Sexo { get; private set; }
         public string Telefone { get; private set; }
         public string Email { get; private set; }

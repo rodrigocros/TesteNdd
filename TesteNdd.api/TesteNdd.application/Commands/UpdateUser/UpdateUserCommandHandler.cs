@@ -29,7 +29,7 @@ namespace TesteNdd.application.Commands.UpdateUser
             user.Update(request.Telefone, request.Email, request.Observacao);
             await _userRepoisitory.SaveChangesAsync();
 
-            UserViewModel userView = new UserViewModel(user.Nome, user.Sexo, user.Telefone, user.Email, user.DataNascimento, user.Observacao);
+            UserViewModel userView = new UserViewModel(request.Id, request.Id.ToString() ,user.Nome, user.Sexo, user.Telefone, user.Email, user.DataNascimento, user.Observacao);
             return userView;
             
             

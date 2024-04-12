@@ -13,20 +13,20 @@ namespace TesteNdd.application.Validators
     {
         public CreateUserCommandValidator() 
         {
-            RuleFor(p => p.Nome).NotEmpty().NotNull().WithMessage("Nome e obrigatorio");
-            RuleFor(p => p.Telefone).NotEmpty().NotNull().WithMessage("Telefone e obrigatorio");
-            RuleFor(p => p.Sexo).NotEmpty().NotNull().WithMessage("Sexo e obrigatorio");
-            RuleFor(p => p.DataNascimento).NotEmpty().NotNull().WithMessage("Data de Nascimento obrigatoria");
-            RuleFor(p => p.Email).NotEmpty().NotNull().EmailAddress().WithMessage("Email nao valido");
-            RuleFor(p => p.CPF).NotEmpty().NotNull().Must(cPFisValid).WithMessage("CPF nao valido");
+            RuleFor(p => p.Nome).NotEmpty().NotNull().WithMessage("Nome é obrigatório");
+            RuleFor(p => p.Telefone).NotEmpty().NotNull().WithMessage("Telefone é obrigatório");
+            RuleFor(p => p.Sexo).NotEmpty().NotNull().WithMessage("Sexo é obrigatório");
+            RuleFor(p => p.DataNascimento).NotEmpty().NotNull().WithMessage("Data de Nascimento obrigatória");
+            RuleFor(p => p.Email).NotEmpty().NotNull().EmailAddress().WithMessage("Email nao válido");
+            RuleFor(p => p.CPF).NotEmpty().NotNull().Length(0, 11);
 
         }
 
-        public bool cPFisValid(string cpf)
-        {
-            var regex = new Regex(@"^\d{2}.\d{3}.\d{3}/\d{4}-\d{2}$");
+        //public bool cPFisValid(string cpf)
+        //{
+        //    var regex = new Regex(@"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}");
 
-            return regex.IsMatch(cpf);
-        }
+        //    return regex.IsMatch(cpf);
+        //}
     }
 }
