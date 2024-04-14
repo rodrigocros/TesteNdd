@@ -1,25 +1,28 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/SDK:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["TesteNdd.api/TesteNdd.api.csproj", "TesteNdd.api/"]
 COPY ["TesteNdd.application/TesteNdd.application.csproj", "TesteNdd.application/"]
-COPY ["TesteNdd.infrastructure/TesteNdd.infrastructure.csproj", "TesteNdd.infrastructure/"]
 COPY ["TesteNDD.domain/TesteNDD.domain.csproj", "TesteNDD.domain/"]
-COPY ["TesteNDD.domain/TesteNDD.api.csproj", "TesteNDD.api/"]
-RUN dotnet restore "TesteNdd.application\TesteNdd.application.csproj"
+COPY ["TesteNdd.infrastructure/TesteNdd.infrastructure.csproj", "TesteNdd.infrastructure/"]
+RUN dotnet restore "./TesteNdd.api/TesteNdd.api.csproj"
 COPY . .
-WORKDIR "/src/TesteNDD.api"
-RUN dotnet "TesteNDD.api.csproj" -c $BUILD_CONFIGURATION -o /app/build 
+WORKDIR "/src/TesteNdd.api"
+RUN dotnet build "./TesteNdd.api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
-ARF BUILD_CONFIGURATION=Release
-RUN dotnet publish "TesteNDD.api.csproj" c $BUILD_CONFIGURATION -o /app/publish 
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./TesteNdd.api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-FROM base AS finall
-workdir /app
-COPY --from=publish /app/pubish .
-ENTRYPOINT ["dotnet", "TesteNDD.api.dll"]
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "TesteNdd.api.dll"]
