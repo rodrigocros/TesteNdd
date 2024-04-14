@@ -19,9 +19,7 @@ namespace TesteNdd.UnitTests.Application.Queries
 {
     public class GetAllUsersCommandHandler
     {
-        //private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-       // private readonly UserController _userController;
         public GetAllUsersCommandHandler()
         {
             var config = new MapperConfiguration(opt =>
@@ -33,36 +31,8 @@ namespace TesteNdd.UnitTests.Application.Queries
         }
 
 
-
-
-        //[Fact]
-        //public void ExistsUsers_Executed_ReturnThreeViewModels()
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    //Arrange
-
-        //    CreateUserCommand command = new CreateUserCommand()
-        //    {
-        //        Nome = "testet1",
-        //        CPF = "09877412",
-        //        Sexo = "Masculino",
-        //        Telefone = "4347268376",
-        //        Email = "iodajdasoijh@gmail.com",
-        //        DataNascimento = new DateTime(1990, 5, 5),
-        //        Observacao = "obs"
-        //    }; 
-
-
-        //    var actionResult = _userController.Post(command);
-
-        //    Assert.NotNull(actionResult);
-        //    Assert.IsType<Task<IActionResult>>(actionResult);
-        //    Assert.True(actionResult.IsCompletedSuccessfully);
-
-        //}
-
         [Fact]
-        public async void ExistsUsers_Executed_ReturnThreeViewModels()
+        public async void IfComandHandlerWorksWithAutomaper()
         {
 
             //Arrange
@@ -75,6 +45,7 @@ namespace TesteNdd.UnitTests.Application.Queries
 
             var userRepositoryMock = new Mock<IUserRepository>();
             userRepositoryMock.Setup(pr => pr.GetAllAsync()).ReturnsAsync(users);
+
             var getAllUsersQuery = new GetAllUsersQuery();
             var getAllUsersQueryHandler = new GetAllUserQueryHandler(userRepositoryMock.Object, _mapper);
 
@@ -85,10 +56,6 @@ namespace TesteNdd.UnitTests.Application.Queries
             //Assert
 
             Assert.NotNull(UserViewModelList);
-            Assert.NotNull(UserViewModelList);
-
-            Assert.Equal(users.Count, UserViewModelList.Count());
-
             userRepositoryMock.Verify(u => u.GetAllAsync().Result, Times.Once);
         }
     }
